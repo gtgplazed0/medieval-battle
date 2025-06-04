@@ -47,9 +47,17 @@ position = Vector2(185, 78)
 position = Vector2(102, 87)
 
 [node name="CorruptedKnight" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_n4u12")]
-position = Vector2(144, 105)
+position = Vector2(226, 119)
 player = NodePath("../Player")
 
 [node name="CorruptedKnight2" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_n4u12")]
-position = Vector2(70, 108)
+position = Vector2(12, 121)
+player = NodePath("../Player")
+
+[node name="CorruptedKnight3" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_n4u12")]
+position = Vector2(230, 64)
+player = NodePath("../Player")
+
+[node name="CorruptedKnight4" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_n4u12")]
+position = Vector2(-37, 59)
 player = NodePath("../Player")

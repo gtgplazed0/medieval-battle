@@ -135,10 +135,10 @@ func on_receive_damage(amount: int, direction: Vector2, hit_type: DamageReceiver
 		current_health = clamp(current_health - amount, 0, max_health)
 		if current_health == 0 or hit_type == DamageReceiver.HitType.KNOCKDOWN:
 			state = State.FALL
-			height_speed = knockdown_intensity
+			height_speed = knockdown_intensity * RandomNumberGenerator.new().randf_range(1,1.3 )
 		else:
 			state = State.HURT
-		velocity = direction * knockback_intensity
+		velocity = direction * knockback_intensity * RandomNumberGenerator.new().randf_range(1,1.3 )
 
 func on_emit_damage(receiver: DamageReceiver) -> void:
 	var hit_type := DamageReceiver.HitType.NORMAL
