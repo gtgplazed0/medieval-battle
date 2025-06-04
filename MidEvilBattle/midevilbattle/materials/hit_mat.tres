@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bc11gi4v61p14"]
+
+[ext_resource type="Shader" uid="uid://ce8o2rwdpurdt" path="res://materials/hit_shader.gdshader" id="1_srrcw"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_srrcw")
+shader_parameter/flash_colour = Color(1, 0.567396, 0.504914, 1)
+shader_parameter/hit_flash_on = false
+shader_parameter/alpha_override = 1.0

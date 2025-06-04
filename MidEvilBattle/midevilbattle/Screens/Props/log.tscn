@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://vbx33iyf81l"]
+
+[ext_resource type="Texture2D" uid="uid://cxlhq8hrqgpbb" path="res://Assets/Props/SnowyLog/SnowyLog.png" id="1_mrjaw"]
+[ext_resource type="Script" uid="uid://b317xrv376tib" path="res://Scripts/log.gd" id="1_p2qqb"]
+[ext_resource type="PackedScene" uid="uid://c0sc4rrecqk2r" path="res://Screens/Colliders/damage_reciver.tscn" id="2_x83p3"]
+[ext_resource type="Texture2D" uid="uid://driycg1womh45" path="res://Assets/Props/SnowyLog/Log Shadow.png" id="3_1aqku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1aqku"]
+size = Vector2(3.72214, 12.5955)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2qqb"]
+size = Vector2(10, 15.5)
+
+[node name="Log" type="StaticBody2D" groups=["repulsers"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_p2qqb")
+knockback_intensity = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mrjaw")
+centered = false
+offset = Vector2(-32, -64)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_1aqku")
+centered = false
+offset = Vector2(-32, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.24525e-05, -1.54361)
+rotation = 1.5708
+scale = Vector2(0.782557, 1.07181)
+shape = SubResource("RectangleShape2D_1aqku")
+
+[node name="DamageReciver" parent="." instance=ExtResource("2_x83p3")]
+collision_layer = 64
+
+[node name="CollisionShape2D" parent="DamageReciver" index="0"]
+position = Vector2(0, -14.75)
+shape = SubResource("RectangleShape2D_p2qqb")
+
+[editable path="DamageReciver"]

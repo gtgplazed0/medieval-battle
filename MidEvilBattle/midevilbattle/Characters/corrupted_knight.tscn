@@ -1,0 +1,233 @@
+[gd_scene load_steps=34 format=3 uid="uid://c7bdfig2l2m35"]
+
+[ext_resource type="PackedScene" uid="uid://da8s4oafvc6n4" path="res://Characters/base_character.tscn" id="1_y3dew"]
+[ext_resource type="Script" uid="uid://gtk2a0hiw3yr" path="res://Characters/corrupted_knight.gd" id="2_ilu1o"]
+[ext_resource type="Texture2D" uid="uid://detw7axyf2cjs" path="res://Assets/Characters/CorruptedKnight/corrupted_knight.png" id="2_r17i3"]
+[ext_resource type="Texture2D" uid="uid://c1t2fqx0hejb6" path="res://Assets/Characters/CorruptedKnight/idle/corrupted_knight1.png" id="3_hu4j6"]
+[ext_resource type="Texture2D" uid="uid://u56kysexaxpi" path="res://Assets/Characters/CorruptedKnight/idle/corrupted_knight2.png" id="4_pub8c"]
+[ext_resource type="Texture2D" uid="uid://bbi3tytqww6l" path="res://Assets/Characters/CorruptedKnight/idle/corrupted_knight3.png" id="5_836jp"]
+[ext_resource type="Texture2D" uid="uid://bd87m1tgrial2" path="res://Assets/Characters/CorruptedKnight/idle/corrupted_knight4.png" id="6_vsk1d"]
+[ext_resource type="Texture2D" uid="uid://d3xk1it1qrka5" path="res://Assets/Characters/CorruptedKnight/idle/corrupted_knight5.png" id="7_neht1"]
+[ext_resource type="Texture2D" uid="uid://dw3xpqlgg4sgi" path="res://Assets/Characters/CorruptedKnight/walk/walk1.png" id="8_5ia0u"]
+[ext_resource type="Texture2D" uid="uid://bxhpqk5hw74j4" path="res://Assets/Characters/CorruptedKnight/walk/walk2.png" id="9_ilu1o"]
+[ext_resource type="Texture2D" uid="uid://cxmneoodmqe3a" path="res://Assets/Characters/CorruptedKnight/walk/walk3.png" id="10_n3r32"]
+[ext_resource type="Texture2D" uid="uid://w8sypepyhxmr" path="res://Assets/Characters/CorruptedKnight/walk/walk4.png" id="11_ss6hg"]
+[ext_resource type="Texture2D" uid="uid://dg6fywjxjknkx" path="res://Assets/Characters/CorruptedKnight/walk/walk5.png" id="12_g4c6s"]
+[ext_resource type="Texture2D" uid="uid://cbtiavgf0nyh2" path="res://Assets/Characters/CorruptedKnight/walk/walk6.png" id="13_l30r6"]
+[ext_resource type="Texture2D" uid="uid://bujmpyacqmeae" path="res://Assets/Characters/CorruptedKnight/walk/walk7.png" id="14_yrb27"]
+[ext_resource type="Texture2D" uid="uid://ddo4kwp7fil5p" path="res://Assets/Characters/CorruptedKnight/walk/walk8.png" id="15_rx2ui"]
+[ext_resource type="Texture2D" uid="uid://blgcnsf56xcmr" path="res://Assets/Characters/CorruptedKnight/hit/hurt1.png" id="17_g4c6s"]
+[ext_resource type="Texture2D" uid="uid://druu7yx8bt3o6" path="res://Assets/Characters/CorruptedKnight/hit/hurt2.png" id="18_l30r6"]
+[ext_resource type="Texture2D" uid="uid://nthadc8qtcsw" path="res://Assets/Characters/CorruptedKnight/hit/hurt3.png" id="19_yrb27"]
+[ext_resource type="Texture2D" uid="uid://bkrek2gnlnohn" path="res://Assets/Characters/CorruptedKnight/Knockback/knocked1.png" id="20_yrb27"]
+[ext_resource type="Texture2D" uid="uid://dukjmmcurofux" path="res://Assets/Characters/CorruptedKnight/Knockback/knocked2.png" id="21_rx2ui"]
+[ext_resource type="Texture2D" uid="uid://bx5v352bveb5a" path="res://Assets/Characters/CorruptedKnight/Landing/Sprite-0030.png" id="22_rx2ui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx2ui"]
+size = Vector2(4, 20)
+
+[sub_resource type="Animation" id="Animation_81jk2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_r17i3")]
+}
+
+[sub_resource type="Animation" id="Animation_gjnx3"]
+resource_name = "fall"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_yrb27")]
+}
+
+[sub_resource type="Animation" id="Animation_4dery"]
+resource_name = "grounded"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("21_rx2ui")]
+}
+
+[sub_resource type="Animation" id="Animation_rx2ui"]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_g4c6s"), ExtResource("18_l30r6"), ExtResource("19_yrb27")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_action_complete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_58e8h"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.566667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_hu4j6"), ExtResource("4_pub8c"), ExtResource("5_836jp"), ExtResource("6_vsk1d"), ExtResource("7_neht1")]
+}
+
+[sub_resource type="Animation" id="Animation_321ic"]
+resource_name = "land"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("22_rx2ui")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_land_complete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_amrkh"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_5ia0u"), ExtResource("9_ilu1o"), ExtResource("10_n3r32"), ExtResource("11_ss6hg"), ExtResource("12_g4c6s"), ExtResource("13_l30r6"), ExtResource("14_yrb27"), ExtResource("15_rx2ui")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ycjo"]
+_data = {
+&"RESET": SubResource("Animation_81jk2"),
+&"fall": SubResource("Animation_gjnx3"),
+&"grounded": SubResource("Animation_4dery"),
+&"hurt": SubResource("Animation_rx2ui"),
+&"idle": SubResource("Animation_58e8h"),
+&"landing": SubResource("Animation_321ic"),
+&"walk": SubResource("Animation_amrkh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilu1o"]
+size = Vector2(7.5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3r32"]
+size = Vector2(12, 11)
+
+[node name="CorruptedKnight" groups=["repulsers"] instance=ExtResource("1_y3dew")]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("2_ilu1o")
+damage = 2
+duration_grounded = 500.0
+knockback_intensity = 40.0
+knockdown_intensity = 100.0
+max_health = 20
+speed = 25.0
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_r17i3")
+offset = Vector2(-32, -64)
+
+[node name="CollisionShape2D" parent="." index="2"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_rx2ui")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_0ycjo")
+}
+autoplay = "idle"
+
+[node name="DamageEmitter" parent="." index="4"]
+position = Vector2(0, -10)
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="DamageEmitter" index="0"]
+position = Vector2(8.25, 0)
+shape = SubResource("RectangleShape2D_ilu1o")
+
+[node name="DamageReciver" parent="." index="5"]
+position = Vector2(-1, -21)
+collision_layer = 32
+
+[node name="CollisionShape2D" parent="DamageReciver" index="0"]
+position = Vector2(1, 1.5)
+scale = Vector2(1.00214, 1)
+shape = SubResource("RectangleShape2D_n3r32")
+
+[editable path="DamageEmitter"]
+[editable path="DamageReciver"]
