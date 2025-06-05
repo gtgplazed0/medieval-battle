@@ -3,15 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://cgw3qbkyuybxg" path="res://Assets/Backgrounds/Sprite-0018.png" id="1_wfuvl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfuvl"]
-size = Vector2(427, 64.5)
+size = Vector2(820.25, 124)
 
 [node name="Stage" type="Node2D"]
 
 [node name="Backgrounds" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds"]
-position = Vector2(5.96046e-08, -5.96046e-08)
-scale = Vector2(2, 2)
 texture = ExtResource("1_wfuvl")
 centered = false
 
@@ -21,12 +19,12 @@ centered = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldColliders/StaticBody2D"]
-position = Vector2(199, 32.25)
+position = Vector2(403.875, 45)
 shape = SubResource("RectangleShape2D_wfuvl")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="WorldColliders"]
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldColliders/StaticBody2D2"]
-position = Vector2(200, 160)
+position = Vector2(407, 310)
 shape = SubResource("RectangleShape2D_wfuvl")

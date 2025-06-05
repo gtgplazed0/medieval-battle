@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7kmeexhgsgvc"
-path="res://.godot/imported/Sprite-0018.png-20833dd7fc21b88e5ecd4c99548b4c65.ctex"
+uid="uid://bkd6aqq7ixbti"
+path="res://.godot/imported/Sprite-0022.png-25b17beb368fd4dab04c7743be865fa2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Knight/Walk/Sprite-0018.png"
-dest_files=["res://.godot/imported/Sprite-0018.png-20833dd7fc21b88e5ecd4c99548b4c65.ctex"]
+source_file="res://Assets/Characters/Knight/Attacks/punch/Sprite-0022.png"
+dest_files=["res://.godot/imported/Sprite-0022.png-25b17beb368fd4dab04c7743be865fa2.ctex"]
 
 [params]
 

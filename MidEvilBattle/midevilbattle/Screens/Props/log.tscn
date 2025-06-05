@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://driycg1womh45" path="res://Assets/Props/SnowyLog/Log Shadow.png" id="3_1aqku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aqku"]
-size = Vector2(3.72214, 12.5955)
+size = Vector2(9.52824, 39.186)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2qqb"]
-size = Vector2(10, 15.5)
+size = Vector2(24, 40)
 
 [node name="Log" type="StaticBody2D" groups=["repulsers"]]
 collision_layer = 8
@@ -29,7 +29,7 @@ centered = false
 offset = Vector2(-32, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.24525e-05, -1.54361)
+position = Vector2(1.25154e-05, -2.2718)
 rotation = 1.5708
 scale = Vector2(0.782557, 1.07181)
 shape = SubResource("RectangleShape2D_1aqku")
@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_1aqku")
 collision_layer = 64
 
 [node name="CollisionShape2D" parent="DamageReciver" index="0"]
-position = Vector2(0, -14.75)
+position = Vector2(0, -27)
 shape = SubResource("RectangleShape2D_p2qqb")
 
 [editable path="DamageReciver"]
