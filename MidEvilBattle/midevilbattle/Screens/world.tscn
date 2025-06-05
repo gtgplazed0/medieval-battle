@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ei0xa3b0ylru"]
+[gd_scene load_steps=12 format=3 uid="uid://ei0xa3b0ylru"]
 
 [ext_resource type="PackedScene" uid="uid://cptyrbn416amo" path="res://Screens/Stage/stage.tscn" id="1_ktvp7"]
 [ext_resource type="Script" uid="uid://cn4kbofjq4j57" path="res://Scripts/world.gd" id="1_wx3o6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vbx33iyf81l" path="res://Screens/Props/log.tscn" id="4_i5lu5"]
 [ext_resource type="Shader" uid="uid://bhxnibbej433u" path="res://GodotRetro/Screen Shaders/Aditional Shaders/Sharpness.gdshader" id="5_2kvxl"]
 [ext_resource type="Shader" uid="uid://cfhmbc0wfvwse" path="res://GodotRetro/Screen Shaders/NTSCBasic.gdshader" id="5_n4u12"]
+[ext_resource type="PackedScene" uid="uid://bsgttlf56vix8" path="res://Characters/wolf.tscn" id="5_wjj3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wx3o6"]
 size = Vector2(6, 254.753)
@@ -21,14 +22,8 @@ shader_parameter/_fringing = 0.136
 shader_parameter/_scanline = 0.187
 shader_parameter/linearColorSpace = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_embre"]
-size = Vector2(38, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rsvg"]
-size = Vector2(48.5, 23)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjj3o"]
-size = Vector2(55.5, 30.9748)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kvxl"]
+size = Vector2(820.25, 124)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_wx3o6")
@@ -75,10 +70,17 @@ position = Vector2(362, 223)
 [node name="Player" parent="Actors" instance=ExtResource("2_mtihj")]
 position = Vector2(151, 234)
 
+[node name="Wolf" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_wjj3o")]
+position = Vector2(47, 170)
+player = NodePath("../Player")
+
+[node name="Wolf2" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_wjj3o")]
+position = Vector2(277, 163)
+player = NodePath("../Player")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_wjj3o")
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,28 +96,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InvisibleObjects" type="Node2D" parent="."]
+[node name="WorldColliders" type="Node2D" parent="."]
 
-[node name="Rock3" type="StaticBody2D" parent="InvisibleObjects"]
-position = Vector2(137, 116)
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldColliders"]
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleObjects/Rock3"]
-position = Vector2(13, -5)
-shape = SubResource("RectangleShape2D_embre")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldColliders/StaticBody2D"]
+position = Vector2(403.875, 45)
+shape = SubResource("RectangleShape2D_2kvxl")
 
-[node name="Rock4" type="StaticBody2D" parent="InvisibleObjects"]
-position = Vector2(426, 113)
+[node name="StaticBody2D2" type="StaticBody2D" parent="WorldColliders"]
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleObjects/Rock4"]
-position = Vector2(-1, -6)
-shape = SubResource("RectangleShape2D_6rsvg")
-
-[node name="Rock5" type="StaticBody2D" parent="InvisibleObjects"]
-position = Vector2(679, 111)
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleObjects/Rock5"]
-position = Vector2(-0.75, -12.4903)
-shape = SubResource("RectangleShape2D_wjj3o")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldColliders/StaticBody2D2"]
+position = Vector2(407, 310)
+shape = SubResource("RectangleShape2D_2kvxl")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsgttlf56vix8"]
+
+[ext_resource type="PackedScene" uid="uid://da8s4oafvc6n4" path="res://Characters/base_character.tscn" id="1_8unhj"]
+[ext_resource type="Texture2D" uid="uid://bo75wc0x162c1" path="res://Assets/Characters/Wolf/Base/Base.png" id="2_am38k"]
+[ext_resource type="Script" uid="uid://gtk2a0hiw3yr" path="res://Scripts/enemy.gd" id="2_o3cll"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3cll"]
+size = Vector2(43, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sramv"]
+size = Vector2(22, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a03j8"]
+size = Vector2(30, 32)
+
+[node name="Wolf" instance=ExtResource("1_8unhj")]
+script = ExtResource("2_o3cll")
+damage = 30
+duration_grounded = 1000.0
+knockback_intensity = 60.0
+knockdown_intensity = 50.0
+speed = 80.0
+
+[node name="Shadow" parent="." index="0"]
+scale = Vector2(2, 2)
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_am38k")
+centered = true
+offset = Vector2(0, -32)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(-2.5, 0.5)
+shape = SubResource("RectangleShape2D_o3cll")
+
+[node name="DamageEmitter" parent="." index="4"]
+position = Vector2(0, -33)
+
+[node name="CollisionShape2D" parent="DamageEmitter" index="0"]
+position = Vector2(18, 0)
+shape = SubResource("RectangleShape2D_sramv")
+
+[node name="CollisionShape2D" parent="DamageReciver" index="0"]
+position = Vector2(0, -38)
+shape = SubResource("RectangleShape2D_a03j8")
+
+[editable path="DamageEmitter"]
+[editable path="DamageReciver"]
