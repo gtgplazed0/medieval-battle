@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cnnqut6bqsd8m"]
+[gd_scene load_steps=54 format=3 uid="uid://cnnqut6bqsd8m"]
 
 [ext_resource type="PackedScene" uid="uid://da8s4oafvc6n4" path="res://Characters/base_character.tscn" id="1_5mj4t"]
 [ext_resource type="Texture2D" uid="uid://cwi18ch3lc5ln" path="res://Assets/Characters/Knight/Idle/Idle1.png" id="2_4m0gv"]
@@ -126,10 +126,10 @@ tracks/1/path = NodePath("DamageEmitter:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_0rrrc"]
@@ -212,7 +212,7 @@ tracks/2/path = NodePath("DamageEmitter:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -255,7 +255,7 @@ tracks/2/path = NodePath("DamageEmitter:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -298,7 +298,7 @@ tracks/2/path = NodePath("DamageEmitter:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -307,7 +307,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_yq7ba"]
 resource_name = "punch_alt_3"
 length = 0.5
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -341,7 +341,7 @@ tracks/2/path = NodePath("DamageEmitter:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -416,15 +416,13 @@ size = Vector2(22, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw3oq"]
 size = Vector2(18, 22)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_puhia"]
-radius = 2.0
-
 [node name="Player" instance=ExtResource("1_5mj4t")]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("2_aw3oq")
 can_respawn = true
 damage = 4
+damage_power = 6
 jump_intensity = 200.0
 max_health = 30
 speed = 140.0
@@ -466,30 +464,17 @@ shape = SubResource("RectangleShape2D_aw3oq")
 [node name="PrimaryEnemySlots" type="Node2D" parent="." index="6"]
 
 [node name="EnemySlot" parent="PrimaryEnemySlots" index="0" instance=ExtResource("23_0rrrc")]
-position = Vector2(18, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryEnemySlots/EnemySlot" index="0"]
-position = Vector2(8, 1)
-shape = SubResource("CircleShape2D_puhia")
+position = Vector2(44, 8)
 
 [node name="EnemySlot2" parent="PrimaryEnemySlots" index="1" instance=ExtResource("23_0rrrc")]
-position = Vector2(-17, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryEnemySlots/EnemySlot2" index="0"]
-position = Vector2(-8, 1)
-shape = SubResource("CircleShape2D_puhia")
+position = Vector2(-38, 8)
 
 [node name="EnemySlot3" parent="PrimaryEnemySlots" index="2" instance=ExtResource("23_0rrrc")]
-position = Vector2(26, -5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryEnemySlots/EnemySlot3" index="0"]
-shape = SubResource("CircleShape2D_puhia")
+position = Vector2(44, -8)
 
 [node name="EnemySlot4" parent="PrimaryEnemySlots" index="3" instance=ExtResource("23_0rrrc")]
-position = Vector2(-25, -5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryEnemySlots/EnemySlot4" index="0"]
-shape = SubResource("CircleShape2D_puhia")
+position = Vector2(-38, -8)
 
 [editable path="DamageEmitter"]
 [editable path="DamageReciver"]
+[editable path="CollatDamageEmitter"]

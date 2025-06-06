@@ -28,5 +28,8 @@ centered = false
 
 [node name="DamageReciver" parent="." instance=ExtResource("3_wglnu")]
 
+[node name="CollatDamageEmitter" parent="." instance=ExtResource("4_a46ic")]
+
 [editable path="DamageEmitter"]
 [editable path="DamageReciver"]
+[editable path="CollatDamageEmitter"]

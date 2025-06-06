@@ -1,48 +1,313 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsgttlf56vix8"]
+[gd_scene load_steps=34 format=3 uid="uid://bsgttlf56vix8"]
 
 [ext_resource type="PackedScene" uid="uid://da8s4oafvc6n4" path="res://Characters/base_character.tscn" id="1_8unhj"]
-[ext_resource type="Texture2D" uid="uid://bo75wc0x162c1" path="res://Assets/Characters/Wolf/Base/Base.png" id="2_am38k"]
 [ext_resource type="Script" uid="uid://gtk2a0hiw3yr" path="res://Scripts/enemy.gd" id="2_o3cll"]
+[ext_resource type="Texture2D" uid="uid://bfawymwrty2nc" path="res://Assets/Characters/Wolf/Idle/Idle1.png" id="3_uj87h"]
+[ext_resource type="Texture2D" uid="uid://g0w8ywye02ta" path="res://Assets/Characters/Wolf/Idle/Idle2.png" id="4_fsncx"]
+[ext_resource type="Texture2D" uid="uid://c3sq0gt6aojky" path="res://Assets/Characters/Wolf/Idle/Idle3.png" id="5_kok6u"]
+[ext_resource type="Texture2D" uid="uid://nmnxvtxusuy3" path="res://Assets/Characters/Wolf/Idle/Idle4.png" id="6_dvpse"]
+[ext_resource type="Texture2D" uid="uid://c1v4idimi3kn3" path="res://Assets/Characters/Wolf/Idle/Idle5.png" id="7_g04v3"]
+[ext_resource type="Texture2D" uid="uid://c8k4gy5ckn2mb" path="res://Assets/Characters/Wolf/walk/walk1.png" id="8_t3m72"]
+[ext_resource type="Texture2D" uid="uid://bgm7quch2v2ax" path="res://Assets/Characters/Wolf/walk/walk2.png" id="9_u7qgx"]
+[ext_resource type="Texture2D" uid="uid://bregr16ehboqb" path="res://Assets/Characters/Wolf/walk/walk3.png" id="10_nm6gn"]
+[ext_resource type="Texture2D" uid="uid://bmbaeq02b8tuc" path="res://Assets/Characters/Wolf/walk/walk4.png" id="11_nkcy5"]
+[ext_resource type="Texture2D" uid="uid://eat6rlrvllv1" path="res://Assets/Characters/Wolf/walk/walk5.png" id="12_fruc3"]
+[ext_resource type="Texture2D" uid="uid://kf6iogn7v34d" path="res://Assets/Characters/Wolf/walk/walk6.png" id="13_w2nxp"]
+[ext_resource type="Texture2D" uid="uid://ckf1hxh16immn" path="res://Assets/Characters/Wolf/jump/grounded.png" id="14_u7qgx"]
+[ext_resource type="Texture2D" uid="uid://4gdjtrqsrfly" path="res://Assets/Characters/Wolf/jump/landing.png" id="15_nm6gn"]
+[ext_resource type="Texture2D" uid="uid://tyv1h33v57sb" path="res://Assets/Characters/Wolf/jump/Fall.png" id="16_nkcy5"]
+[ext_resource type="Texture2D" uid="uid://cyaox8vfy5kfg" path="res://Assets/Characters/Wolf/hit/Sprite-0007.png" id="17_fruc3"]
+[ext_resource type="Texture2D" uid="uid://lgwlht8lpeyx" path="res://Assets/Characters/Wolf/hit/Sprite-0008.png" id="18_r6vda"]
+[ext_resource type="Texture2D" uid="uid://cpuhsjwyuiruj" path="res://Assets/Characters/Wolf/fly/fly.png" id="18_w2nxp"]
+[ext_resource type="Texture2D" uid="uid://wu6kxokay68r" path="res://Assets/Characters/Wolf/hit/Sprite-0009.png" id="19_3pqhw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3cll"]
-size = Vector2(43, 7)
+size = Vector2(46, 7)
+
+[sub_resource type="Animation" id="Animation_3vkqj"]
+resource_name = "idle"
+length = 0.54
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_uj87h"), ExtResource("4_fsncx"), ExtResource("5_kok6u"), ExtResource("6_dvpse"), ExtResource("7_g04v3")]
+}
+
+[sub_resource type="Animation" id="Animation_t3m72"]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_uj87h")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_action_complete"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollatDamageEmitter:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m36o3"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_t3m72"), ExtResource("9_u7qgx"), ExtResource("10_nm6gn"), ExtResource("11_nkcy5"), ExtResource("12_fruc3"), ExtResource("13_w2nxp")]
+}
+
+[sub_resource type="Animation" id="Animation_nm6gn"]
+resource_name = "grounded"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_u7qgx")]
+}
+
+[sub_resource type="Animation" id="Animation_u7qgx"]
+resource_name = "landing"
+length = 0.2
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_land_complete"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_nm6gn")]
+}
+
+[sub_resource type="Animation" id="Animation_fruc3"]
+resource_name = "fall"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_nkcy5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollatDamageEmitter:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_w2nxp"]
+resource_name = "hit"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_fruc3"), ExtResource("18_r6vda"), ExtResource("19_3pqhw")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_action_complete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r6vda"]
+resource_name = "fly"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("18_w2nxp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollatDamageEmitter:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7qgx"]
+_data = {
+&"RESET": SubResource("Animation_t3m72"),
+&"fall": SubResource("Animation_fruc3"),
+&"fly": SubResource("Animation_r6vda"),
+&"grounded": SubResource("Animation_nm6gn"),
+&"hurt": SubResource("Animation_w2nxp"),
+&"idle": SubResource("Animation_3vkqj"),
+&"landing": SubResource("Animation_u7qgx"),
+&"walk": SubResource("Animation_m36o3")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sramv"]
 size = Vector2(22, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a03j8"]
-size = Vector2(30, 32)
+size = Vector2(39, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6vda"]
+size = Vector2(20, 17)
 
 [node name="Wolf" instance=ExtResource("1_8unhj")]
+collision_layer = 4
+collision_mask = 8
 script = ExtResource("2_o3cll")
-damage = 30
+damage = 2
 duration_grounded = 1000.0
-knockback_intensity = 60.0
-knockdown_intensity = 50.0
+knockback_intensity = 25.0
+flight_speed = 250.0
+knockdown_intensity = 150.0
+max_health = 20
 speed = 80.0
 
 [node name="Shadow" parent="." index="0"]
 scale = Vector2(2, 2)
 
 [node name="Sprite" parent="." index="1"]
-texture = ExtResource("2_am38k")
+texture = ExtResource("3_uj87h")
 centered = true
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(-2.5, 0.5)
 shape = SubResource("RectangleShape2D_o3cll")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_u7qgx")
+}
+autoplay = "idle"
 
 [node name="DamageEmitter" parent="." index="4"]
 position = Vector2(0, -33)
+collision_mask = 16
 
 [node name="CollisionShape2D" parent="DamageEmitter" index="0"]
-position = Vector2(18, 0)
+position = Vector2(22, 0)
 shape = SubResource("RectangleShape2D_sramv")
 
+[node name="DamageReciver" parent="." index="5"]
+collision_layer = 32
+
 [node name="CollisionShape2D" parent="DamageReciver" index="0"]
-position = Vector2(0, -38)
+position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_a03j8")
+
+[node name="CollatDamageEmitter" parent="." index="6"]
+collision_mask = 160
+
+[node name="CollisionShape2D" parent="CollatDamageEmitter" index="0"]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_r6vda")
 
 [editable path="DamageEmitter"]
 [editable path="DamageReciver"]
+[editable path="CollatDamageEmitter"]

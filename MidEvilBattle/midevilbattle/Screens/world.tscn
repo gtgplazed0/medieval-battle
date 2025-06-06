@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bsgttlf56vix8" path="res://Characters/wolf.tscn" id="5_wjj3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wx3o6"]
-size = Vector2(6, 254.753)
+size = Vector2(13, 254.753)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wjj3o"]
 shader = ExtResource("5_2kvxl")
@@ -37,18 +37,24 @@ position = Vector2(200, 128)
 position = Vector2(-100, -64)
 scale = Vector2(1, 1.00097)
 
-[node name="LeftWall" type="StaticBody2D" parent="Camera/InvisibleWalls"]
+[node name="LeftWall" type="AnimatableBody2D" parent="Camera/InvisibleWalls"]
 position = Vector2(-102, 64.937)
+collision_layer = 128
+collision_mask = 0
+sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/InvisibleWalls/LeftWall"]
-position = Vector2(0, -0.0620156)
+position = Vector2(3.5, -0.0620117)
 shape = SubResource("RectangleShape2D_wx3o6")
 
-[node name="RightWall" type="StaticBody2D" parent="Camera/InvisibleWalls"]
+[node name="RightWall" type="AnimatableBody2D" parent="Camera/InvisibleWalls"]
 position = Vector2(303, 63.938)
+collision_layer = 128
+collision_mask = 0
+sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/InvisibleWalls/RightWall"]
-position = Vector2(0, -0.0620126)
+position = Vector2(-5, -2.96049e-05)
 shape = SubResource("RectangleShape2D_wx3o6")
 
 [node name="Actors" type="Node2D" parent="."]
@@ -58,15 +64,6 @@ y_sort_enabled = true
 [node name="Log" parent="Actors" instance=ExtResource("4_i5lu5")]
 position = Vector2(328, 134)
 
-[node name="Log2" parent="Actors" instance=ExtResource("4_i5lu5")]
-position = Vector2(492, 136)
-
-[node name="Log3" parent="Actors" instance=ExtResource("4_i5lu5")]
-position = Vector2(450, 220)
-
-[node name="Log4" parent="Actors" instance=ExtResource("4_i5lu5")]
-position = Vector2(362, 223)
-
 [node name="Player" parent="Actors" instance=ExtResource("2_mtihj")]
 position = Vector2(151, 234)
 
@@ -74,8 +71,28 @@ position = Vector2(151, 234)
 position = Vector2(47, 170)
 player = NodePath("../Player")
 
+[node name="Wolf3" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_wjj3o")]
+position = Vector2(230, 216)
+player = NodePath("../Player")
+
 [node name="Wolf2" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_wjj3o")]
-position = Vector2(277, 163)
+position = Vector2(158, 216)
+player = NodePath("../Player")
+
+[node name="Wolf6" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_wjj3o")]
+position = Vector2(88, 216)
+player = NodePath("../Player")
+
+[node name="Wolf4" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_wjj3o")]
+position = Vector2(306, 217)
+player = NodePath("../Player")
+
+[node name="Wolf7" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_wjj3o")]
+position = Vector2(378, 219)
+player = NodePath("../Player")
+
+[node name="Wolf5" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_wjj3o")]
+position = Vector2(361, 180)
 player = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
