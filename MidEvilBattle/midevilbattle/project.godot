@@ -14,6 +14,10 @@ config/name="Medival Battle"
 run/main_scene="uid://ei0xa3b0ylru"
 config/features=PackedStringArray("4.4")
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=400
@@ -87,6 +91,7 @@ jump={
 2d_physics/layer_6="EnemyDamageReceiver"
 2d_physics/layer_7="DestructiblesDamageReceiver"
 2d_physics/layer_8="InvisibleWalls"
+2d_physics/layer_9="Collectibles"
 
 [rendering]
 

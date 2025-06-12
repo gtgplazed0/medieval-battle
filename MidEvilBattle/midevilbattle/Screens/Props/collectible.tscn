@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjgeje6lytmqe"]
+
+[ext_resource type="PackedScene" uid="uid://ckuqrvy18hcq5" path="res://Screens/Colliders/damage_emitter.tscn" id="1_buhvj"]
+[ext_resource type="Script" uid="uid://bwo7n4miv60wo" path="res://Screens/Props/collectible.gd" id="1_wvw0a"]
+[ext_resource type="Texture2D" uid="uid://bdcvfeoygjwv3" path="res://Assets/Characters/Shadow.png" id="2_becv6"]
+
+[node name="Collectible" type="Area2D"]
+collision_layer = 256
+collision_mask = 6
+monitoring = false
+monitorable = false
+script = ExtResource("1_wvw0a")
+speed = 100.0
+knockdown_intensity = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="CollectibleSprite" type="Sprite2D" parent="."]
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_becv6")
+centered = false
+offset = Vector2(-16, -2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ShadowSprite")
+
+[node name="DamageEmitter" parent="." instance=ExtResource("1_buhvj")]

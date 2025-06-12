@@ -1,9 +1,95 @@
-[gd_scene load_steps=5 format=3 uid="uid://da8s4oafvc6n4"]
+[gd_scene load_steps=9 format=3 uid="uid://da8s4oafvc6n4"]
 
 [ext_resource type="Script" uid="uid://dnm112e5d4n08" path="res://Scripts/base_character.gd" id="1_t6krv"]
 [ext_resource type="Texture2D" uid="uid://bdcvfeoygjwv3" path="res://Assets/Characters/Shadow.png" id="2_pcj28"]
+[ext_resource type="Material" uid="uid://bc11gi4v61p14" path="res://materials/hit_mat.tres" id="3_a46ic"]
 [ext_resource type="PackedScene" uid="uid://c0sc4rrecqk2r" path="res://Screens/Colliders/damage_reciver.tscn" id="3_wglnu"]
 [ext_resource type="PackedScene" uid="uid://ckuqrvy18hcq5" path="res://Screens/Colliders/damage_emitter.tscn" id="4_a46ic"]
+
+[sub_resource type="Animation" id="Animation_a46ic"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_colour")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/hit_flash_on")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:material:shader_parameter/alpha_override")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_iidpf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_colour")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/hit_flash_on")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:material:shader_parameter/alpha_override")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pxwdx"]
+_data = {
+&"RESET": SubResource("Animation_iidpf"),
+&"hit": SubResource("Animation_a46ic")
+}
 
 [node name="BaseCharacter" type="CharacterBody2D"]
 collision_layer = 0
@@ -16,8 +102,12 @@ texture = ExtResource("2_pcj28")
 centered = false
 offset = Vector2(-16, -2)
 
+[node name="KnifeSprite" type="Sprite2D" parent="."]
+z_index = -2
+
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
+material = ExtResource("3_a46ic")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,6 +119,21 @@ centered = false
 [node name="DamageReciver" parent="." instance=ExtResource("3_wglnu")]
 
 [node name="CollatDamageEmitter" parent="." instance=ExtResource("4_a46ic")]
+
+[node name="ProjectileAim" type="RayCast2D" parent="."]
+target_position = Vector2(300, 0)
+collision_mask = 0
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pxwdx")
+}
+
+[node name="CollectibleSensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectibleSensor"]
 
 [editable path="DamageEmitter"]
 [editable path="DamageReciver"]
