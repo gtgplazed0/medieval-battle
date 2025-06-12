@@ -26,7 +26,10 @@ func handle_input() -> void:
 	if can_jump() and Input.is_action_just_pressed("jump"):
 		state = State.TAKEOFF
 	if can_jumpkick() and Input.is_action_just_pressed("attack"):
-		state = State.JUMPKICK
+		if has_knife:
+			state = State.JUMPTHROW
+		else:
+			state = State.JUMPKICK
 		
 
 func set_heading() -> void:

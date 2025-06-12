@@ -27,7 +27,7 @@ const GRAVITY := 600.0
 @onready var knife_sprite := $KnifeSprite
 @onready var collectible_sensor : Area2D = $CollectibleSensor
 
-enum State {IDLE, WALK, ATTACK, TAKEOFF, JUMP, LAND, JUMPKICK, HURT, FALL, GROUNDED, DEATH, FLY, PREP_ATTACK, THROW, PICKUP}
+enum State {IDLE, WALK, ATTACK, TAKEOFF, JUMP, LAND, JUMPKICK, HURT, FALL, GROUNDED, DEATH, FLY, PREP_ATTACK, THROW,JUMPTHROW,PICKUP}
 
 var anim_attacks := []
 var anim_map := {
@@ -45,7 +45,8 @@ var anim_map := {
 	State.FLY: "fly",
 	State.PREP_ATTACK: "idle",
 	State.THROW: "throw",
-	State.PICKUP:'pickup'
+	State.PICKUP:'pickup',
+	State.JUMPTHROW: "jump_throw"
 }
 var attack_combo_index := 0
 var current_health := 0
