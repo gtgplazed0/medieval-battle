@@ -76,22 +76,12 @@ position = Vector2(215, 147)
 position = Vector2(151, 234)
 
 [node name="Skeleton" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("6_embre")]
-visible = false
 position = Vector2(30, 159)
-duration_between_melee_attacks = 100000000000
-duration_between_range_attacks = 1000000000000
 player = NodePath("../Player")
-damage = 0
-speed = 0.0
 
 [node name="Wolf" parent="Actors" node_paths=PackedStringArray("player") instance=ExtResource("5_wjj3o")]
-visible = false
 position = Vector2(75, 112)
-duration_between_melee_attacks = 100000000000
-duration_between_range_attacks = 1000000000000
 player = NodePath("../Player")
-damage = 0
-speed = 0.0
 
 [node name="Knife" parent="Actors" instance=ExtResource("7_6rsvg")]
 position = Vector2(66, 220)

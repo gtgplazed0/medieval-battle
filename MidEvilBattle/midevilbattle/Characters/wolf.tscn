@@ -412,22 +412,25 @@ speed = 80.0
 [node name="Shadow" parent="." index="0"]
 scale = Vector2(2, 2)
 
-[node name="Sprite" parent="." index="1"]
+[node name="KnifeSprite" parent="." index="1"]
+visible = false
+
+[node name="Sprite" parent="." index="2"]
 material = SubResource("ShaderMaterial_v0pyu")
 texture = ExtResource("3_uj87h")
 centered = true
 offset = Vector2(0, -32)
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="3"]
 shape = SubResource("RectangleShape2D_o3cll")
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 &"": SubResource("AnimationLibrary_u7qgx")
 }
 autoplay = "idle"
 
-[node name="DamageEmitter" parent="." index="4"]
+[node name="DamageEmitter" parent="." index="5"]
 position = Vector2(0, -33)
 collision_mask = 16
 
@@ -435,22 +438,19 @@ collision_mask = 16
 position = Vector2(24.5, 0)
 shape = SubResource("RectangleShape2D_sramv")
 
-[node name="DamageReciver" parent="." index="5"]
+[node name="DamageReciver" parent="." index="6"]
 collision_layer = 32
 
 [node name="CollisionShape2D" parent="DamageReciver" index="0"]
 position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_a03j8")
 
-[node name="CollatDamageEmitter" parent="." index="6"]
+[node name="CollatDamageEmitter" parent="." index="7"]
 collision_mask = 160
 
 [node name="CollisionShape2D" parent="CollatDamageEmitter" index="0"]
 position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_r6vda")
-
-[node name="KnifeSprite" parent="." index="7"]
-visible = false
 
 [node name="ProjectileAim" parent="." index="8"]
 visible = false
